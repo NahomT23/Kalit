@@ -1,4 +1,3 @@
-
 // FOR THE SHOP ITEMS
 let shop = document.getElementById("shop")
 
@@ -25,6 +24,7 @@ let generateShop = (items) => {
     shop.innerHTML = items.map((x) => {
         let {id,name,price,desc,img,popupImages} = x;
         let search = basket.find((x)=>x.id === id ) || []
+  
         return `  
     <div id = product-id-${id} class="item" ondblclick='togglePopup("${id}")'>    
     <img src=${img}>
@@ -49,6 +49,7 @@ function togglePopup(id){
 
     let item = shopItemData.find(x => x.id === id);
     let search = basket.find((x)=>x.id === id ) || []
+
     let popupContent = `
         <div class="popup-box">
             <div class="right-box">
@@ -60,9 +61,9 @@ function togglePopup(id){
                 </div>
             </div>
             <div class="details-box">
-                <h2>$ ${item.price}</h2>
+                <h2>Birr ${item.price}</h2>
                 <h2>Specifications</h2>
-                <p>${item.spec}</p>
+                <p class="vertical-text">${item.spec}</p>
                 <div class="buttons">
                     <i onclick='decrement("${id}")' class="bi bi-dash"></i>
                     <div id=${id} class="quantity">${search.item === undefined ? 0 : search.item}</div>
@@ -81,7 +82,6 @@ function togglePopup(id){
         };
     });
 }
-
 
 generateShop(shopItemData)
 
@@ -123,7 +123,6 @@ window.decrement = function(id) {
     // Call the calculation function to update the cart icon
     calculation();
 }
-
 
 // FOE THE CALCULATION AND THE UPDATE FUNCTION
 
@@ -170,8 +169,8 @@ overlay.addEventListener('click', function() {
 
 
 // FOR THE SCROLL UP
-
 const toTop = document.querySelector(".to-top")
+
 window.addEventListener("scroll", checkHeight)
 function checkHeight(){
     if(window.scrollY > 100){
@@ -182,11 +181,32 @@ function checkHeight(){
 }
 
 
+//  FOR THE ARROW TO CHANGE COLOR WHEN IN THE FOOTER
+let footer;
+let footerOffset;
+
+window.onload = function() {
+    footer = document.querySelector('.footer-container');
+    footerOffset = footer.offsetTop;
+
+    window.addEventListener("scroll", checkHeight);
+}
+
+function checkHeight() {
+    if(window.scrollY > 100){
+        toTop.style.display = "flex"
+    } else{
+        toTop.style.display = "none"
+    }
+    let footerRect = footer.getBoundingClientRect();
+    if(window.scrollY + window.innerHeight > window.scrollY + footerRect.top + 90){
+        toTop.style.color = "red";
+    } else{
+        toTop.style.color = "black";
+    }
+}
 
 
 
-item.popupImages.forEach((src, index) => {
-    document.getElementById(`popup-box-image-${index}`).onclick = function() {
-        document.getElementById("main-image").src = src;
-    };
-});
+
+
