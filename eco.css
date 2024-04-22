@@ -55,11 +55,20 @@ li a{
 .navbar a:hover:not(.logo):hover {
     border-bottom: 2px solid white;    
 }
+.header-container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
 
 .header{
-    display: flex;
-    text-align: center;
-    justify-content: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 7.5s;
+}
+@keyframes typing{
+    from{width: 0;}
 }
 
 /* FOR THE CART INSIDE THE NAV BAR */
@@ -83,7 +92,6 @@ li a{
 
 /* FOR THE HAMBURGER MENU */
 
-
 .navbar .openMenu{
     font-size: 2rem;
     margin: 20px;
@@ -93,9 +101,14 @@ li a{
 .navbar .bi-file-excel{
     display: none;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 25px;
+}
+.bi-file-excel:hover{
+    font-size: 50px;
+    color: darkred;
 }
 @media(max-width: 800px){
+    
     .navbar .mainMenu{
         height: 100vh;
         position: fixed;
@@ -121,7 +134,7 @@ li a{
         position: absolute;
         top: 20px;
         right: 20px;
-        padding: 100px;
+        padding: 10px;
         font-size: 50px;
 
     }
@@ -140,7 +153,9 @@ li a{
         display: inline-block;
         padding: 12px;
     }
-
+    .mainMenu li a {
+        font-size:28px; 
+        padding: 10px 20px;    }     
 }
 
 /* FOR THE SEARCH BAR */
@@ -246,7 +261,6 @@ li a{
     }
 }
 
-
 /**
 * ! FOR THE CART PAGE
 **/
@@ -315,8 +329,6 @@ li a{
 }
 
 /* FOR THE POPUP */
-
-
 
 .popup .overlay{
     position: fixed;
@@ -526,13 +538,220 @@ li a{
 .details-box {
     align-items: center; /* Center align the texts */
 }
+} 
 
 
+/* FOR THE FOOTER */
+.footer-container{
+    padding-top: 90px;
+}
+footer{
+    background-color: rgb(34, 34, 34);
+    color: white;
+}
+.footer-info{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    padding: 25px 0 ;
+}
+.footer-info .footer-width{
+    padding: 0 25px;
+}
+.footer-info h2{
+    margin-bottom: 10px;
+}
+.fabout, .fcontact{
+    width: 40%;
+}
+
+.flink{
+    width: 20%;
+}
+.social-media ul{
+    display: flex;
+}
+.social-media{
+    margin-top: 30px;
+}
+.social-media ul li a{
+    display: inline-block;
+    margin-right: 50px;
+    width: 50px;
+    height: 50px;
+    padding-top: 12px;
+    background-color: transparent;
+    border: 1px solid white;
+    text-align: center;
+}
+.social-media ul li a:hover{
+    background-color: #fff;
+    color: #000;
+}
+.flink ul li a{
+    cursor: pointer;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.flink ul li a:hover{
+    color: #000;
+}
+.fcontact ul li{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.fcontact ul li span{
+    margin-right: 15px;
+}
+.copy-right{
+    padding: 10px 0;
+    text-align: center;
+    background-color: rgb(66,66,66);
+}
+.flink ul li {
+    display: block;
+}
+
+
+@media screen and(max-width: 992px) {
+    .fabout, .fcontact{
+        width: 35%;
+    }
+    .flink{
+        width: 30%;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:767px){
+    .fabout, .fcontact, .flink{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .footer-info{
+        flex-direction: column;
+    }
 }
 
 
 
 
+.image-box {
+    width: 90px; /* Adjust as needed */
+    height: 90px; /* Adjust as needed */
+    /* rest of your styles... */
+}
+.popup-box-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will cover the whole area of the box */
+}
+
+
+
+
+
+
+
+
+
+
+/* FOR THE POPUP BOX */
+
+.popup-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.right-box, .details-box {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-image-box, .small-images {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.main-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.small-images {
+    overflow: auto;
+}
+
+.image-box {
+    flex: 0 0 auto;
+    margin: 0 5px;
+}
+
+.details-box {
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+@media screen and (min-width: 768px) { /* Tablet and up */
+    .popup-box {
+        flex-direction: row;
+    }
+
+    .right-box, .details-box {
+        width: 50%;
+    }
+
+    .main-image {
+        height: 300px;
+        width: auto;
+    }
+    
+    
+    .image-box {
+        height: 90px;
+        width: 90px;
+    }
+}
+
+.main-image {
+    width: 300px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    object-fit: contain;
+}
+.popup .content {
+    /* Your existing styles... */
+    top: 80%; /* Adjust as needed */
+}
+
+.popup .content {
+    /* Your existing styles... */
+    overflow: auto;
+}
+
+
+.details-box p, .details-box h2 {
+    /* Add to other selectors as needed... */
+    word-wrap: break-word;
+}
+
+.small-images {
+    /* Your existing styles... */
+    overflow: hidden;
+}
+
+.popup .close-btn {
+    /* Your existing styles... */
+    right: 5px; /* Adjust as needed */
+}
 
 
 
