@@ -4,7 +4,6 @@ window.onload = function() {
     calculation();
 }
 
-
 const mainMenu = document.querySelector(".mainMenu");
 const closeMenu = document.querySelector(".bi-file-excel");
 const openMenu = document.querySelector(".openMenu");
@@ -34,6 +33,7 @@ let calculation =()=>{
 
 calculation()
 
+
 let generateCardItems = ()=>{
     if(basket.length !==0){
         return (shoppingCart.innerHTML = basket.map((x)=>{
@@ -47,7 +47,7 @@ let generateCardItems = ()=>{
             <div class = "title-price-x">
             <h4 class="title-price">
             <p>${name}</p>
-            <p class="cart-item-price">$${price}</p>
+            <p class="cart-item-price">$${price}</p> <!-- Display only the unit price -->
             </h4>
             <i onclick="removeItem(${id})"class ="bi bi-x-lg"></i>
             </div>
@@ -56,7 +56,6 @@ let generateCardItems = ()=>{
             <div id=${id} class="quantity">${item}</div>
             <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
             </div>
-            <h3>${item * price}</h3>
             </div>
             </div>`;
         })
@@ -71,7 +70,6 @@ let generateCardItems = ()=>{
         <button class="HomeBtn">Back to Home</button></a>`
     }
 }
-
 generateCardItems()
 
 let increment = (id) =>{
@@ -102,7 +100,6 @@ let decrement = (id) =>{
     else {
         search.item -=1
     }
-
     update(selectedItem.id)
     basket = basket.filter((x) => x.item !==0)   
     generateCardItems() 
@@ -135,8 +132,6 @@ let clearCart = () =>{
     calculation()
 }
 
-
-
 let totalAmount = ()=>{
     if(basket.length !==0){
         let amount = basket.map((x)=>{
@@ -146,7 +141,7 @@ let totalAmount = ()=>{
         }).reduce((x,y)=> x+y, 0)
         label.innerHTML = 
         `
-        <h2>Total bill : $ ${amount}</h2>
+        <h2>Total bill : Birr ${amount}</h2>
         <button class= "checkout">Checkout</button>
         <button onclick = "clearCart()" class= "removeall">Clear cart</button>`
 
